@@ -1,0 +1,14 @@
+# Python and Poetry files
+__pycache__/
+*.pyc
+*.pyo/
+*.egg-info/
+*.egg
+*.log
+*.env
+.poetry/
+__pypackages__/
+dist/
+.coverage
+coverage.xml
+.pytest_cache/
