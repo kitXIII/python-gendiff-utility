@@ -2,7 +2,7 @@ from pathlib import Path
 from gendiff import generate_diff
 
 
-def get_path(file_name):
+def get_path(file_name: str) -> str:
     p = Path(__file__)
     current_dir = p.absolute().parent
     return current_dir / 'fixtures' / file_name

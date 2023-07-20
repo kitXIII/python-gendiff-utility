@@ -1,9 +1,9 @@
-import json
+from gendiff.parser import get_file_type, parse
 
 
-def generate_diff(path1, path2) -> str:
-    data1 = json.load(open(path1))
-    data2 = json.load(open(path2))
+def generate_diff(path1, path2):
+    data1 = parse(open(path1), get_file_type(str(path1)))
+    data2 = parse(open(path2), get_file_type(str(path2)))
 
     return build_diff(data1, data2)
 
