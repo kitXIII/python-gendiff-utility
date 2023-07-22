@@ -1,15 +1,15 @@
 import os
 from gendiff.parser import parse
 from gendiff.build_diff import build_diff
-from gendiff.render import render
+from gendiff.format_diff import format_diff
 
 
-def generate_diff(path1, path2):
+def generate_diff(path1, path2, fmt='stylish'):
     data1 = parse(open(path1), get_file_type(str(path1)))
     data2 = parse(open(path2), get_file_type(str(path2)))
 
     diff = build_diff(data1, data2)
-    return render(diff)
+    return format_diff(diff, fmt)
 
 
 types = {
