@@ -8,9 +8,7 @@ def format_stylish(diff, depth=0):
         diff
     ))
 
-    final_symbol = '\n' if depth == 0 else ''
-
-    return '\n'.join(['{', *result, indentation(depth) + '}']) + final_symbol
+    return '\n'.join(['{', *result, indentation(depth) + '}'])
 
 
 node_formatters = {
@@ -45,9 +43,8 @@ def fmt_node(prefix, key, value, nodeDepth=0):
 
 def fmt(prefix, key, value, depth=0):
     fmt_value = transform_value(value)
-    val_str = fmt_value if fmt_value == '' else f" {fmt_value}"
 
-    return f"{indentation(depth)}  {prefix} {key}:{val_str}"
+    return f"{indentation(depth)}  {prefix} {key}: {fmt_value}"
 
 
 def indentation(depth):

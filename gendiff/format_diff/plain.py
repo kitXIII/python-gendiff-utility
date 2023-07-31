@@ -9,9 +9,7 @@ def format_plain(diff, ancestry=[]):
         nodes
     )
 
-    final_symbol = '\n' if len(ancestry) == 0 else ''
-
-    return '\n'.join(result) + final_symbol
+    return '\n'.join(result)
 
 
 node_formatters = {
