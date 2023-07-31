@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     env:
-      PYTHON_VERSION: 3.11
+      PYTHON_VERSION: '3.10'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
