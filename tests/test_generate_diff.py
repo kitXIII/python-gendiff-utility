@@ -16,3 +16,15 @@ def test_gendiff_json():
 def test_gendiff_yaml():
     diff = generate_diff(get_path('file1.yaml'), get_path('file2.yml'))
     assert diff == open(get_path('plain_result')).read()
+
+
+def test_gendiff_nested_json():
+    diff = generate_diff(get_path('nested_file1.json'),
+                         get_path('nested_file2.json'))
+    assert diff == open(get_path('nested_plain_result')).read()
+
+
+def test_gendiff_nested_yaml():
+    diff = generate_diff(get_path('nested_file1.yaml'),
+                         get_path('nested_file2.yml'))
+    assert diff == open(get_path('nested_plain_result')).read()
