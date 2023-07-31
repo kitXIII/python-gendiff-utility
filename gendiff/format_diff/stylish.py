@@ -1,3 +1,6 @@
+from gendiff.format_diff.transform_value import transform_value
+
+
 def format_stylish(diff, depth=0):
     result = flatten(map(
         lambda node:
@@ -41,14 +44,7 @@ def fmt_node(prefix, key, value, nodeDepth=0):
 
 
 def fmt(prefix, key, value, depth=0):
-    fmt_value = value
-    if value is True:
-        fmt_value = 'true'
-    elif value is False:
-        fmt_value = 'false'
-    elif value is None:
-        fmt_value = 'null'
-
+    fmt_value = transform_value(value)
     val_str = fmt_value if fmt_value == '' else f" {fmt_value}"
 
     return f"{indentation(depth)}  {prefix} {key}:{val_str}"
