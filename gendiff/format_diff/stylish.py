@@ -19,9 +19,8 @@ node_formatters = {
     'unchanged': lambda node, nodeDepth, _:
         fmt_node(' ', node.get('key'), node.get('value'), nodeDepth),
     'updated': lambda node, nodeDepth, _: [
-            fmt_node('-', node.get('key'), node.get('prev_value'), nodeDepth),
-            fmt_node('+', node.get('key'), node.get('value'), nodeDepth)
-        ],
+        fmt_node('-', node.get('key'), node.get('prev_value'), nodeDepth),
+        fmt_node('+', node.get('key'), node.get('value'), nodeDepth)],
     'nested': lambda node, nodeDepth, fmt_nested:
         fmt_node(
             ' ',

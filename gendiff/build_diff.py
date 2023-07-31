@@ -15,10 +15,9 @@ handlers = [
         'check': lambda key, dict1, dict2:
             type(dict1.get(key)) == dict and type(dict2.get(key)) == dict,
         'handle': lambda key, dict1, dict2, func: {
-                'type': 'nested',
-                'key': key,
-                'children': func(dict1.get(key), dict2.get(key))
-            }
+            'type': 'nested',
+            'key': key,
+            'children': func(dict1.get(key), dict2.get(key))}
     },
     {
         'check': lambda key, dict1, dict2: dict1.get(key) == dict2.get(key),
