@@ -14,13 +14,13 @@ def format_stylish(diff, depth=0):
 
 
 node_formatters = {
-    'add': lambda node, nodeDepth, _:
+    'added': lambda node, nodeDepth, _:
         fmt_node('+', node.get('key'), node.get('value'), nodeDepth),
-    'del': lambda node, nodeDepth, _:
+    'deleted': lambda node, nodeDepth, _:
         fmt_node('-', node.get('key'), node.get('value'), nodeDepth),
-    'eq': lambda node, nodeDepth, _:
+    'unchanged': lambda node, nodeDepth, _:
         fmt_node(' ', node.get('key'), node.get('value'), nodeDepth),
-    'upd': lambda node, nodeDepth, _: [
+    'updated': lambda node, nodeDepth, _: [
             fmt_node('-', node.get('key'), node.get('prev_value'), nodeDepth),
             fmt_node('+', node.get('key'), node.get('value'), nodeDepth)
         ],

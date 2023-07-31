@@ -2,7 +2,7 @@ from gendiff.format_diff.transform_value import transform_value
 
 
 def format_plain(diff, ancestry=[]):
-    nodes = filter(lambda node: node.get('type') != 'eq', diff)
+    nodes = filter(lambda node: node.get('type') != 'unchanged', diff)
     result = map(
         lambda node:
             node_formatters.get(node.get('type'))(node, ancestry, format_plain),
@@ -15,14 +15,14 @@ def format_plain(diff, ancestry=[]):
 
 
 node_formatters = {
-    'add': lambda node, ancestry, _:
+    'added': lambda node, ancestry, _:
         "Property '{key}' was added with value: {value}".format(
             key=fmt_key(node.get('key'), ancestry),
             value=fmt_value(node.get('value'))),
-    'del': lambda node, ancestry, _:
+    'deleted': lambda node, ancestry, _:
         "Property '{key}' was removed".format(
             key=fmt_key(node.get('key'), ancestry)),
-    'upd': lambda node, ancestry, _:
+    'updated': lambda node, ancestry, _:
         "Property '{key}' was updated. From {prev_value} to {value}".format(
             key=fmt_key(node.get('key'), ancestry),
             prev_value=fmt_value(node.get('prev_value')),

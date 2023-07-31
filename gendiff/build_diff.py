@@ -2,13 +2,13 @@ handlers = [
     {
         'check': lambda key, dict1, _: key not in dict1,
         'handle': lambda key, _, dict2, func: {
-            'type': 'add', 'key': key, 'value': dict2.get(key)
+            'type': 'added', 'key': key, 'value': dict2.get(key)
         }
     },
     {
         'check': lambda key, _, dict2: key not in dict2,
         'handle': lambda key, dict1, *_: {
-            'type': 'del', 'key': key, 'value': dict1.get(key)
+            'type': 'deleted', 'key': key, 'value': dict1.get(key)
         }
     },
     {
@@ -23,13 +23,13 @@ handlers = [
     {
         'check': lambda key, dict1, dict2: dict1.get(key) == dict2.get(key),
         'handle': lambda key, dict1, *_: {
-            'type': 'eq', 'key': key, 'value': dict1.get(key)
+            'type': 'unchanged', 'key': key, 'value': dict1.get(key)
         }
     },
     {
         'check': lambda key, dict1, dict2: dict1.get(key) != dict2.get(key),
         'handle': lambda key, dict1, dict2, _: {
-            'type': 'upd',
+            'type': 'updated',
             'key': key,
             'value': dict2.get(key),
             'prev_value': dict1.get(key)

@@ -35,3 +35,10 @@ def test_gendiff_nested_with_plain_output():
                          get_path('nested_file2.json'),
                          'plain')
     assert diff == open(get_path('nested_plain_result')).read()
+
+
+def test_gendiff_nested_with_json_output():
+    diff = generate_diff(get_path('nested_file1.json'),
+                         get_path('nested_file2.json'),
+                         'json')
+    assert diff == open(get_path('nested_json_result')).read()
