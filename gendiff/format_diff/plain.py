@@ -37,10 +37,10 @@ def fmt_key(key, ancestry):
 
 
 def fmt_value(value):
-    if type(value) == dict:
+    if isinstance(value, dict):
         return '[complex value]'
 
-    if type(value) == str:
+    if isinstance(value, str):
         return f"'{value}'"
 
     return transform_value(value)

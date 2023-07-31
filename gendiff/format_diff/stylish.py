@@ -34,7 +34,7 @@ node_formatters = {
 
 
 def fmt_node(prefix, key, value, nodeDepth=0):
-    if type(value) != dict:
+    if not isinstance(value, dict):
         return fmt(prefix, key, value, nodeDepth)
 
     values = [fmt_node(' ', k, v, nodeDepth + 1) for k, v in value.items()]
@@ -57,7 +57,7 @@ def indentation(depth):
 def flatten(coll):
     results = []
     for item in coll:
-        if type(item) == list:
+        if isinstance(item, list):
             results.extend(item)
         else:
             results.append(item)
