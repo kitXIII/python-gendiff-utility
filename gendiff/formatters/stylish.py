@@ -32,27 +32,26 @@ node_formatters = {
 
 def fmt_node(prefix, key, value, nodeDepth=0):
     if type(value) != dict:
-        return indentation(nodeDepth) + fmt(prefix, key, value)
+        return fmt(prefix, key, value, nodeDepth)
 
     values = [fmt_node(' ', k, v, nodeDepth + 1) for k, v in value.items()]
     nested_value = '\n'.join(['{', *values, indentation(nodeDepth + 1) + '}'])
 
-    return indentation(nodeDepth) + fmt(prefix, key, nested_value)
+    return fmt(prefix, key, nested_value, nodeDepth)
 
 
-def fmt(prefix, key, value):
-    formatted_value = value
+def fmt(prefix, key, value, depth=0):
+    fmt_value = value
     if value is True:
-        formatted_value = 'true'
+        fmt_value = 'true'
     elif value is False:
-        formatted_value = 'false'
+        fmt_value = 'false'
     elif value is None:
-        formatted_value = 'null'
+        fmt_value = 'null'
 
-    if formatted_value == '':
-        return f"  {prefix} {key}:"
+    val_str = fmt_value if fmt_value == '' else f" {fmt_value}"
 
-    return f"  {prefix} {key}: {formatted_value}"
+    return f"{indentation(depth)}  {prefix} {key}:{val_str}"
 
 
 def indentation(depth):
